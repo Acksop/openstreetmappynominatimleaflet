@@ -1,0 +1,8 @@
+{
+    "name": "acksop/openstreetmappynominatimleaflet",
+    "description": "Géocodage Nominatim (OpenStreetMap) et cartes Leaflet, issu de GoogleMapAPI v3",
+    "license": "GPL-3.0-or-later",
+    "require": { "php": ">=8.1", "ext-curl": "*" },
+    "require-dev": { "phpunit/phpunit": "^9.6" },
+    "autoload": { "files": ["config/openstreetmap-parameters.php", "src/GoogleMap.php"] }
+}

@@ -1,0 +1,12 @@
+.env
+.env.*
+vendor/
+node_modules/
+dist/
+composer.lock
+package-lock.json
+.claude/settings.local.json
+CLAUDE.local.md
+# configuration locale (identifiants, DSN) : seul le .skel est versionné
+config/*-local.php
+.phpunit.result.cache
