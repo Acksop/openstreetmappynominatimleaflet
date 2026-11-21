@@ -20,6 +20,8 @@ des coordonnées remplaçable, affichage des points sur une carte **Leaflet**.
 | `config/` | constantes de la bibliothèque (serveurs de géocodage, délais, dimensions, icônes, cache) |
 | `sql/` | schéma d'exemple pour le cache MySQL |
 | `examples/` | exemples d'utilisation, sans identifiants |
+| `public/leaflet-1.9.4/` | Leaflet 1.9.4 autohébergé (copie de B25_FR, licence BSD-2-Clause dans son dossier) |
+| `public/pictos/` | pictos de marqueurs 32 × 44 px (et `-2x` en 64 × 88) par catégorie |
 
 ## Installation
 
@@ -36,6 +38,28 @@ $coordonnees = $carte->getGeocode('1 place de la Révolution 25000 Besançon');
 ```
 
 Ne versionnez jamais d'identifiants (DSN, clés d'API) : passez-les par vos propres fichiers de configuration.
+
+## Exemples de cartes
+
+| Fichier | Carte |
+|---------|-------|
+| `examples/googlemap-pictos.php` | Google Map, un picto par catégorie, légende |
+| `examples/googlemap-descriptions.php` | Google Map, infobulles de description et liste latérale |
+| `examples/leaflet-pictos.php` | OpenStreetMap / Leaflet autohébergé, un picto par catégorie, légende |
+| `examples/leaflet-descriptions.php` | OpenStreetMap / Leaflet autohébergé, bulles de description et liste latérale |
+
+Les quatre pages partagent les points de `examples/donnees/points-besancon.php` (coordonnées fixes, aucun appel à
+Nominatim à l'affichage). Depuis la racine du dépôt :
+
+```bash
+php -S localhost:8000 -t .
+# Google Map : la clé passe par l'environnement, jamais par le code
+OSMPNL_GOOGLE_API_KEY=votre_cle php -S localhost:8000 -t .
+```
+
+puis `http://localhost:8000/examples/leaflet-pictos.php`, etc. Sur un site où Leaflet et les pictos sont servis
+ailleurs, définissez `OSMPNL_URL_LEAFLET` et `OSMPNL_URL_PICTOS` avant d'inclure la configuration (sur B25_FR :
+`/scriptJS/leaflet-1.9.4`).
 
 ## Usage de Nominatim
 

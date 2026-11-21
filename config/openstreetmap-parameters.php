@@ -11,7 +11,8 @@ $osmpnl = [
     'OSMPNL_SERVEUR_NOMINATIM' => 'nominatim.openstreetmap.org',
     'OSMPNL_URL_NOMINATIM'     => 'https://nominatim.openstreetmap.org/',
     'OSMPNL_URL_GOOGLE_GEOCODE'=> 'https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false&key=%s',
-    'OSMPNL_GOOGLE_API_KEY'    => defined('B25_GOOGLEMAP_API_KEY') ? B25_GOOGLEMAP_API_KEY : '',
+    'OSMPNL_GOOGLE_API_KEY'    => defined('B25_GOOGLEMAP_API_KEY')
+        ? B25_GOOGLEMAP_API_KEY : (string) getenv('OSMPNL_GOOGLE_API_KEY'),
     'OSMPNL_PAYS'              => 'france',
     'OSMPNL_USER_AGENT'        => 'Besancon25/1.0 (administrateur@besancon25.fr)',
     'OSMPNL_USER_AGENT_FETCH'  => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13',
@@ -21,6 +22,11 @@ $osmpnl = [
     'OSMPNL_LARGEUR'           => '500px',
     'OSMPNL_HAUTEUR'           => '500px',
     'OSMPNL_TABLE_CACHE'       => 'geocodes',
+    // Leaflet 1.9.4 autohébergé (repris de B25_FR) et pictos : URL web, sans barre finale.
+    // Sur B25_FR : define('OSMPNL_URL_LEAFLET', '/scriptJS/leaflet-1.9.4') avant l'inclusion.
+    'OSMPNL_URL_LEAFLET'       => '/public/leaflet-1.9.4',
+    'OSMPNL_URL_PICTOS'        => '/public/pictos',
+    'OSMPNL_URL_TUILES_OSM'    => 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     'OSMPNL_MARKER_CLUSTERER'  => '/MarkerClusterer-1.0/markerclusterer_compiled.js',
     'OSMPNL_PEAR_DB'           => defined('B25_SCRIPTPHP_PATH')
         ? B25_SCRIPTPHP_PATH . DIRECTORY_SEPARATOR . 'Pear/DB-1.7.14/DB.php' : '',
